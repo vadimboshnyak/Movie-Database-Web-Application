@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    title Editing Movie
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    link(rel='stylesheet' href='addstyle.css')
+  body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/') Home
+        if session && session.loggedin && session.user.contributer
+          li.nav-item
+            a.nav-link(href='/addremoveMovie') Add/Remove Movie
+          li.nav-item
+            a.nav-link(href='/personAdd') Add Person
+        li.nav-item
+          a.nav-link(href='/movies') Movies
+        li.nav-item
+          a.nav-link(href='/users') Users
+        li.nav-item
+          a.nav-link(href='/people') Actors, Writers, Directors
+      ul.navbar-nav.ml-auto
+        if session && session.loggedin
+          a.nav-link(href='/users/'+session.user.id)="You are Currently Online " + session.username  
+          a.nav-link(href='/logout') Log Out?
+        else
+          a.nav-link(href='/login') Login to your account
+    h1 Editing Movie
+    .Adding
+      form(action='/editMovie' method='POST')
+        label(for='movieTitle') Name:
+        br
+        input#name(type='text' name='movieTitle' value=movie.title size='30')
+        br
+        label(for='moviePlot') Plot:
+        br
+        textarea#plot(type='textarea' placeholder='Enter the plot/summary' name='moviePlot' size='30' style=("width: 450px; height: 160px"))
+        br
+        label(for='movieYear') Year:
+        br
+        input(type='text' value=movie.year id='movieYear' name='movieYear')
+        br
+        label(for='movieRunTime') Runtime:
+        br
+        input#Runtime(type='text' value=movie.runtime name='movieRunTime')
+        br
+        label(for='country') Country:
+        br
+        input#genre(type='text' value=movie.country name='movieCountry' size='30')
+        br
+        button#button.btn.btn-primary(type='submit') Edit Movie
+    .edit
+      form(action='/addActor' method='POST')
+          label(for='Actors') Actors:
+          br
+          input#Actors(type='text' placeholder='Enter the Actors Names' name='newActor' size='30')
+          br
+          button#button.btn.btn-primary(type='submit') Add Actor
+      form(action='/addWriter' method='POST')
+          label(for='Writers') Writers:
+          br
+          input#Writers(type='text' placeholder='Enter the Writers Names' name='newWriter' size='30')
+          br
+          button#button.btn.btn-primary(type='submit') Add Writer
+      form(action='/addDirector' method='POST')
+          label(for='Directors') Directors:
+          br
+          input#Directors(type='text' placeholder='Enter the Directors Names' name='newDirector' size='30')
+          br
+          button#button.btn.btn-primary(type='submit') Add Director

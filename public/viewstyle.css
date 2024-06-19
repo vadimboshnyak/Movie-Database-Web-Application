@@ -1,0 +1,53 @@
+
+@font-face {
+    font-family: 'Simplifica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simplifica'), url('SIMPLIFICA Typeface.woff') format('woff');
+    }
+  body {
+      background-image: url("asfalt-light.png");
+      background-color: #2f004f;
+      color: white;
+      font-family: 'Simplifica';
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    h1{
+      position: fixed;
+      left: 750px;
+      top: 100px;
+      padding-left: 25px;
+    }
+    div.poster{
+      position: fixed;
+      left: 705px;
+      top: 200px;
+    }
+    div.img{
+      position: fixed;
+      width: 100px;
+    }           
+    #similar{
+      position: fixed;
+      right: 100px;
+      bottom: 150px
+    }
+    h3{
+      text-decoration: underline;
+    }
+    h4{
+      width: 300px;
+      word-wrap: normal;
+    }
+    div{
+      width: 600px;
+    }  
+    h2{
+      word-wrap: normal;
+      padding-left: 10px;
+    }   
+    p2{
+      font-weight: normal;
+      padding-left: 10px;
+    } 

@@ -1,0 +1,18 @@
+{
+  "name": "vadimboshnyak-checkin3",
+  "version": "1.0.0",
+  "description": "Vadim Boshnyak Check in 2\r 101151803",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Vadim Boshnyak 101151803",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pug": "^3.0.0",
+    "url": "^0.11.0"
+  }
+}

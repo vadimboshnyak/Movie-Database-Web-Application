@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Simplifica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simplifica'), url('SIMPLIFICA Typeface.woff') format('woff');
+    }
+    body {
+        background-image: url("asfalt-light.png");
+        background-color: #2f004f;
+        color: white;
+        font-family: "Simplifica";
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    #username{
+        position: absolute;
+        top: 150px;
+        left: 550px;
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    .user{
+        padding-left: 25px;
+    }
+    h2{
+        padding-left: 25px;
+    }
+    h1{
+        text-align: center;
+    }
+    #rec{
+        position: fixed;
+        right: 350px;
+        bottom: 150px
+    }
+    p2{
+        font-weight: normal;
+        padding-left: 25px;
+    }

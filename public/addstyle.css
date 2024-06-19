@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Simplifica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simplifica'), url('SIMPLIFICA Typeface.woff') format('woff');
+    }
+
+body {
+    background-image: url("asfalt-light.png");
+    background-color: #2f004f;
+    color: white;
+    font-family: 'Simplifica';
+    font-size: xx-large;
+    font-weight: bold;
+  }
+h1{
+    font-weight: bold;
+    text-decoration: underline;
+  }
+.Adding{
+    position: absolute;
+    left: 10px;
+  }
+h2{
+    position: absolute;
+    left: 1200px;
+    top: 100px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.removing{
+    position: absolute;
+    left: 1200px;
+}
+.edit{
+  position: absolute;
+  left: 1200px;
+}

@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    title=movie.title
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    link(rel='stylesheet' href='../viewstyle.css')
+    body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/') Home
+        if session && session.loggedin && session.user.contributer
+          li.nav-item
+            a.nav-link(href='/addremoveMovie') Add/Remove Movie
+          li.nav-item
+            a.nav-link(href='/personAdd') Add Person
+        li.nav-item
+          a.nav-link(href='/movies') Movies
+        li.nav-item
+          a.nav-link(href='/users') Users
+        li.nav-item
+          a.nav-link(href='/people') Actors, Writers, Directors
+      ul.navbar-nav.ml-auto
+        if session && session.loggedin
+          a.nav-link(href='/users/'+session.user.id)="You are Currently Online " + session.username  
+          a.nav-link(href='/logout') Log Out?
+        else
+          a.nav-link(href='/login') Login to your account
+    h1="Title: " + movie.title
+    div
+      .poster 
+        img(src=movie.poster style={width: '300px'})
+    p
+    #similar
+      h3="Similar Movies" 
+      each mov in similar
+        a(href="/movies/"+mov.id)=mov.title
+        div
+          .img
+            img(src=mov.poster style={position:'fixed', width: '150px', right: '220px'})
+          br
+        h4="Actors: " + mov.actors
+        h4="Genre: " + mov.genre
+    h2="Year: " + movie.year
+    p
+      p2="Genre: "
+      each genre in movie.genre
+        a(href="/movies?genre="+genre)= genre + ", "
+    div
+      p
+        p2="Actors: "
+        each actor in movie.actors
+          a(href="/people?name="+actor)= actor + ", "
+      p
+        p2="Directors: "
+        each director in movie.directors
+          a(href="/people?name="+director)= director + ", "
+      p
+        p2="Writers: "
+        each writer in movie.writers
+          a(href="/people?name="+writer)= writer + ", "
+      h2="Runtime: " + movie.runtime
+      h2="Country: " + movie.country
+      h2="Plot: " + movie.plot
+      h2="Average Rating: " + movie.averageRating + "/5"
+      p 
+        if movie.reviews.length>0
+          p2="Reviews: "
+          each review in movie.reviews
+            if (review.detailed !== undefined)
+              h2=review.rate + '/5 ' + review.detailed
+            else
+              h2=review.rate + '/5 '
+      if session && session.loggedin && session.user.contributer
+        form(action='/editMovie' method='GET')
+          input(type='submit' value='Edit Movie')
+          br
+      if session && session.loggedin
+        form(action='/addReview' method='GET')
+          input(type='submit' value='Add Review')
+          br
+

@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title Login Page
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    link(rel='stylesheet' href='loginstyle.css')
+  body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      ul.navbar-nav
+        #logoimg
+          img(src='pic/logo-login.jpg' style='width: 50px;')
+        li.nav-item
+          a.nav-link(href='/') Home
+        if session && session.loggedin && session.user.contributer
+          li.nav-item
+            a.nav-link(href='/addremoveMovie') Add/Remove Movie
+          li.nav-item
+            a.nav-link(href='/personAdd') Add Person
+        li.nav-item
+          a.nav-link(href='/movies') Movies
+        li.nav-item
+          a.nav-link(href='/users') Users
+        li.nav-item
+          a.nav-link(href='/people') Actors, Writers, Directors
+      ul.navbar-nav.ml-auto
+        a.nav-link(href='/login') Login to your account
+    h1 Login To Your Account Or Create a New One!
+    .img
+      img(src='pic/logo-login.jpg')
+    .details
+      form(action="/loginUser" method="POST")
+        label(for='username') Login:
+        br
+        input#login(type='text' placeholder='Enter Username' name='username' size='58')
+        br
+        label(for='password') Password:
+        br
+        input#password(type='password' placeholder='Enter Password' name='password' size='58')
+        br
+        button.btn.btn-primary(type='submit' style='margin:10px') Sign in
+        a#forgot(href='/forgotpw ') Forgot Password? 
+        a#signup(href="/signup") Don't Have an Account? Click here to sign up
+        div

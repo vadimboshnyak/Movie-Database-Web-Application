@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Simplifica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simplifica'), url('SIMPLIFICA Typeface.woff') format('woff');
+    }
+body {
+    background-image: url("asfalt-light.png");
+    background-color: #2f004f;
+    color: white;
+    font-family: "Simplifica";
+    font-size: xx-large;
+  }
+.person{
+    text-align: center;
+  }
+.inforight{
+    position: absolute;
+    top: 100px;
+    list-style-position: inside;
+}

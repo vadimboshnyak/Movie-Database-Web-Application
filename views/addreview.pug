@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    title=movie.title
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    link(rel='stylesheet' href='../viewstyle.css')
+    body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='/') Home
+        if session && session.loggedin && session.user.contributer
+          li.nav-item
+            a.nav-link(href='/addremoveMovie') Add/Remove Movie
+          li.nav-item
+            a.nav-link(href='/personAdd') Add Person
+        li.nav-item
+          a.nav-link(href='/movies') Movies
+        li.nav-item
+          a.nav-link(href='/users') Users
+        li.nav-item
+          a.nav-link(href='/people') Actors, Writers, Directors
+      ul.navbar-nav.ml-auto
+        if session && session.loggedin
+          a.nav-link(href='/users/'+session.user.id)="You are Currently Online " + session.username  
+          a.nav-link(href='/logout') Log Out?
+        else
+          a.nav-link(href='/login') Login to your account
+    h1="Title: " + movie.title
+    div
+      .poster 
+        img(src=movie.poster style={width: '300px'})
+    h2="Year: " + movie.year
+    p
+      p2="Genre: "
+      each genre in movie.genre
+        a(href="/movies?genre="+genre)= genre + ", "
+    div
+      p
+        p2="Actors: "
+        each actor in movie.actors
+          a(href="/people?name="+actor)= actor + ", "
+      p
+        p2="Directors: "
+        each director in movie.directors
+          a(href="/people?name="+director)= director + ", "
+      p
+        p2="Writers: "
+        each writer in movie.writers
+          a(href="/people?name="+writer)= writer + ", "
+      h2="Runtime: " + movie.runtime
+      h2="Country: " + movie.country
+      h2="Plot: " + movie.plot
+      h2="Reviews: " + movie.reviews
+      if session && session.loggedin
+        form(action='/addReview' method='POST')
+            input#review(type='text' placeholder='Enter a Number out of 5' name='review')
+            br
+            button#button.btn.btn-primary(type='submit') Add a Review (Number Out of 5)
+            br
+        form(action='/addDetailedReview' method='POST')
+          input#review(type='text' placeholder='Enter a Number out of 5' name='review')
+          br
+          textarea#detReview(type='textarea' placeholder='Enter a Detailed Review' name='detReview' style=("width: 450px; height: 160px"))
+          br
+          button#button.btn.btn-primary(type='submit') Add a Detailed Review
